@@ -28,7 +28,7 @@ try:
         data = message.value
         try:
             cursor.execute(
-                "INSERT INTO stocks (symbol, price, timestamp) VALUES (%s, %s, %s)",
+                "INSERT INTO stocks (symbol, price, timestamp) VALUES (%s, %s, %s) ON CONFLICT (symbol, timestamp) DO NOTHING",
                 (data['symbol'], data['price'], data['timestamp'])
             )
             conn.commit()
