@@ -2,6 +2,7 @@ import logging
 from kafka import KafkaProducer
 import requests
 import json
+import time
 from config import kafka_config, api_config
 
 logging.basicConfig(level=logging.INFO)
@@ -45,4 +46,6 @@ def fetch_stock_data():
 
 
 if __name__ == '__main__':
-    fetch_stock_data()
+    while True:
+        fetch_stock_data()
+        time.sleep(10)

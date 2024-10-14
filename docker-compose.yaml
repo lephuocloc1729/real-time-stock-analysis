@@ -45,6 +45,12 @@ services:
       db:
         condition: service_healthy
     command: ["sh", "-c", "sleep 45 && python init_db.py"]
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: stock_market
+      DB_USER: postgres
+      DB_PASSWORD: postgres
 
   init-kafka:
     image: wurstmeister/kafka:2.13-2.7.0
